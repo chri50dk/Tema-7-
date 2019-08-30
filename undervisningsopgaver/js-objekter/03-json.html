@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        img {
+            width: 100%;
+        }
+
         .personer {
             border: 1px solid silver;
             padding: 20px;
@@ -94,15 +98,15 @@
                 const klon = skabelon.cloneNode(true);
                 console.log(personer);
 
-                const h2 = klon.querySelector(".navn");
-                h2.textContent = personer.gsx$navn;
+                const h2 = klon.querySelector("h2");
+                h2.textContent = personer.gsx$navn.$t;
 
                 const p = klon.querySelector(".github");
                 p.textContent += " GitHub: " + personer.gsx$github.$t;
 
-                const img = klon.querySelector(".billede");
-                img.src += personer.gsx$billede;
-                img.alt = "Billede af " + personer.gsx$navn.$t;
+                const img = klon.querySelector("img");
+                img.src = personer.gsx$billede.$t;
+                img.alt = "Billede af " + personer.navn;
 
                 const alder = klon.querySelector(".alder");
                 alder.textContent += " Alder: " + personer.gsx$alder.$t;
