@@ -27,7 +27,7 @@
 
     <template>
         <article class="personer">
-            <h2 class="navn">Personer</h2>
+            <h2 class="navn">Navn</h2>
             <p class="github"> </p>
             <img class="billede" src="" alt="">
             <p class="alder"> </p>
@@ -94,28 +94,28 @@
                 const klon = skabelon.cloneNode(true);
                 console.log(personer);
 
-                const h2 = klon.querySelector("h2");
-                h2.textContent = personer.navn;
+                const h2 = klon.querySelector(".navn");
+                h2.textContent = personer.gsx$navn;
 
                 const p = klon.querySelector(".github");
-                p.textContent += " GitHub: " + personer.github;
+                p.textContent += " GitHub: " + personer.gsx$github.$t;
 
                 const img = klon.querySelector(".billede");
-                img.src += personer.billede;
-                img.alt = "Billede af " + personer.navn;
+                img.src += personer.gsx$billede;
+                img.alt = "Billede af " + personer.gsx$navn.$t;
 
                 const alder = klon.querySelector(".alder");
-                alder.textContent += " Alder: " + personer.alder;
+                alder.textContent += " Alder: " + personer.gsx$alder.$t;
 
 
                 const køn = klon.querySelector(".køn");
-                køn.textContent += " Køn: " + personer.køn;
+                køn.textContent += " Køn: " + personer.gsx$køn.$t;
 
                 const email = klon.querySelector(".email");
-                email.textContent += " Email: " + personer.email;
+                email.textContent += " Email: " + personer.gsx$email.$t;
 
                 const hold = klon.querySelector(".hold");
-                hold.textContent += " Hold: " + personer.hold;
+                hold.textContent += " Hold: " + personer.gsx$hold.$t;
 
                 dest.appendChild(klon);
             });
