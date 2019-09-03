@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filtrering</title>
     <style>
+        nav {
+            text-align: center;
+        }
+
         img {
             width: 100%;
         }
@@ -22,10 +26,21 @@
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             grid-gap: 1rem;
         }
+
+        .valgt {
+            background-color: red;
+        }
+
     </style>
 </head>
 
 <body>
+    <nav>
+        <button data-køn="alle" class="valgt">Alle</button>
+        <button data-køn="k">Kvinder</button>
+        <button data-køn="m">Mænd</button>
+        <button data-køn="andet">Andet</button>
+    </nav>
     <section id="person-liste"></section>
 
     <template>
@@ -41,37 +56,52 @@
     </template>
 
     <script>
-        let filter = "k";
+        let filter = "alle";
         let elever = [];
+        const filterKnapper = document.querySelectorAll("button");
 
         document.addEventListener("DOMContentLoaded", start);
 
+        filterKnapper.forEach(knap => knap.addEventListener("click", filtrer));
+
+        //først funktion, der kaldes efter DOM er loaded
         function start() {
+            const filterKnapper = document.querySelectorAll("button");
             console.log(start);
             hentJson();
         }
+
+        //funktion, der filtrerer personer (JSON)
+        function filtrer() {
+            document.querySelector(".valgt").classList.remove("valgt"); //fjern klassen valgt fra aktuel knap
+            this.classList.add("valgt"); //markér den nyvalgte knap
+            filter = this.dataset.køn; //sæt variabel "filter" til aktuel værdi
+            console.log(filter);
+            visJson();
+        }
+
+
         // const id = "1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U"
         const url = "https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json";
 
+        //funktion, der henter data fra den valgte URL
         async function hentJson() {
 
             const response = await fetch(url);
             console.log(response);
             elever = await response.json()
-
-
-
-
             visJson();
 
         }
 
+        //funktion, der viser data (personer i dette filfælde) i liste view
         function visJson() {
-            const skabelon = document.querySelector("template").content;
-            const dest = document.querySelector("#person-liste");
+            const skabelon = document.querySelector("template").content; //select indhold af HTML-skabelon (article)
+            const dest = document.querySelector("#person-liste"); //container til artikler med en person
+            dest.textContent = "";
             console.log(elever);
-            elever.feed.entry.forEach(personer => {
-                if (personer.gsx$køn.$t == filter) {
+            elever.feed.entry.forEach(personer => { //loop igennem JSON (personer)
+                if (personer.gsx$køn.$t == filter || filter == "alle") { //tjek hvilket køn, personen har, og sammellign med filter
                     const klon = skabelon.cloneNode(true);
                     console.log(personer);
 
@@ -102,5 +132,8 @@
                 }
             });
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
