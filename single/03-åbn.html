@@ -39,6 +39,7 @@
             width: 100vw;
             height: 100vh;
             background: hsla(282, 22%, 31%, 0.53);
+            overflow: scroll;
         }
 
         .hidden {
@@ -54,7 +55,7 @@
 
         #detalje .personer {
             width: 60vw;
-            min-height: 50vh;
+            min-height: auto;
             margin: 4rem auto;
             padding: 4rem;
             background: white;
@@ -111,7 +112,7 @@
         }
 
         function hideDetalje() {
-            document.querySelector("#detalje").classList.add("hidden");
+            document.querySelector("#detalje").classList.toggle("hidden");
         }
 
         //funktion, der filtrerer personer (JSON)
@@ -191,6 +192,7 @@
 
         function visDetalje(personer) {
             console.log(personer);
+            document.querySelector("#detalje").classList.toggle("hidden");
             document.querySelector("#detalje h2").textContent = personer.gsx$navn.$t;
             document.querySelector("#detalje img").src = personer.gsx$billede.$t;
             document.querySelector("#detalje img").alt = `Billede af ${personer.gsx$billede.$t}`;
