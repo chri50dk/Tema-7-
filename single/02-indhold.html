@@ -40,6 +40,10 @@
             background: hsla(282, 22%, 31%, 0.53);
         }
 
+        .hidden {
+            display: none;
+        }
+
         #detalje .luk {
             position: fixed;
             top: 0;
@@ -47,13 +51,14 @@
             font-size: 4rem;
         }
 
-        #detalje .person {
+        #detalje .personer {
             width: 60vw;
             min-height: 50vh;
             margin: 4rem auto;
             padding: 4rem;
             background: white;
         }
+
     </style>
 </head>
 
@@ -102,6 +107,11 @@
             const filterKnapper = document.querySelectorAll("button");
             console.log(start);
             hentJson();
+            hideDetalje();
+        }
+
+        function hideDetalje() {
+            document.querySelector("#detalje").classList.add("hidden");
         }
 
         //funktion, der filtrerer personer (JSON)
@@ -161,9 +171,26 @@
                     const hold = klon.querySelector(".hold");
                     hold.textContent += " Hold: " + personer.gsx$hold.$t;
 
+                    klon.querySelector(".personer").addEventListener("click", () => {
+                        visDetalje(personer);
+                    });
+
                     dest.appendChild(klon);
+
+
+
+                    /*dest.lastElementChild.addEventListener("click", () => {
+                        visDetalje(personer);
+                    });*/
                 }
             });
         }
+
+        function visDetalje(personer) {
+            console.log(personer);
+        }
+
     </script>
-</body></html>
+</body>
+
+</html>
