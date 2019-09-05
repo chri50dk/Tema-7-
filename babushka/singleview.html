@@ -47,35 +47,11 @@
             background-color: red;
         }
 
-        #detalje {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: hsla(282, 22%, 31%, 0.53);
-            overflow: scroll;
-        }
+
 
         .hidden {
             display: none;
         }
-
-        #detalje .luk {
-            position: fixed;
-            top: 0;
-            right: 0;
-            font-size: 4rem;
-        }
-
-        #detalje .items {
-            width: 60vw;
-            min-height: auto;
-            margin: 4rem auto;
-            padding: 4rem;
-            background: white;
-        }
-
     </style>
 </head>
 
@@ -126,12 +102,9 @@
             const filterKnapper = document.querySelectorAll("nav button");
             console.log(start);
             hentJson();
-            hideDetalje();
         }
 
-        function hideDetalje() {
-            document.querySelector("#detalje").classList.toggle("hidden");
-        }
+
 
         //funktion, der filtrerer personer (JSON)
         function filtrer() {
@@ -179,34 +152,17 @@
                     const img = klon.querySelector("img");
                     klon.querySelector(".billede").src = "imgs/small/" + items.gsx$billede.$t + "-sm.jpg";
                     img.alt = "Billede af " + items.navn;
-                    /*    klon.querySelector(".personer").addEventListener("click", () => {
-                            visDetalje(personer);
-                        });*/
-
-                    dest.appendChild(klon);
 
 
 
-                    dest.lastElementChild.addEventListener("click", () => {
-                        visDetalje(items);
+
+                    klon.querySelector(".items").addEventListener("click", () => {
+                        location.href = `detalje.html?id=${items.gsx$id.$t}`;
                     });
-                }
+                    dest.appendChild(klon);
+                };
+
             });
         }
-
-        function visDetalje(items) {
-            console.log(items);
-            document.querySelector("#detalje .luk").addEventListener("click", hideDetalje);
-            document.querySelector("#detalje").classList.toggle("hidden");
-            document.querySelector("#detalje h2").textContent = items.gsx$navn.$t;
-            document.querySelector("#detalje img").src = "imgs/large/" + items.gsx$billede.$t + ".jpg";
-            document.querySelector("#detalje img").alt = `Billede af ${items.gsx$billede.$t}`;
-            document.querySelector("#detalje .lang").textContent = `${items.gsx$lang.$t}`;
-            document.querySelector("#detalje .oprindelse").textContent = `Oprindelse: ${items.gsx$oprindelse.$t}`;
-
-        }
-
     </script>
-</body>
-
-</html>
+</body></html>
