@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filtrering</title>
+    <title>Bistro Babushka</title>
     <style>
         body {
-            background-color: brown;
+            background-color: ;
             font-family: arial;
         }
 
@@ -33,6 +33,13 @@
             border: 1px solid silver;
             padding: 20px;
             cursor: pointer;
+            opacity: 0.8;
+            background-color: brown;
+            border-radius: 25px;
+        }
+
+        .items:hover {
+            opacity: 1;
         }
 
         #item-liste {
@@ -44,7 +51,7 @@
         }
 
         .valgt {
-            background-color: red;
+            background-color: brown;
         }
 
         #detalje {
@@ -53,7 +60,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: hsla(282, 22%, 31%, 0.53);
+            background: ;
             overflow: scroll;
         }
 
@@ -73,9 +80,14 @@
             min-height: auto;
             margin: 4rem auto;
             padding: 4rem;
-            background: white;
+            background-color: brown;
         }
 
+        button {
+            border-radius: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -205,8 +217,5 @@
             document.querySelector("#detalje .oprindelse").textContent = `Oprindelse: ${items.gsx$oprindelse.$t}`;
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

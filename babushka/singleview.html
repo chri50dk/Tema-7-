@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filtrering</title>
+    <title>Bistro Babushka</title>
     <style>
         body {
-            background-color: brown;
+            background-color: ;
             font-family: arial;
         }
 
@@ -17,9 +17,7 @@
             font-family: arial;
         }
 
-        .items {
-            background-color: grey;
-        }
+
 
         nav {
             text-align: center;
@@ -33,6 +31,13 @@
             border: 1px solid silver;
             padding: 20px;
             cursor: pointer;
+            border-radius: 25px;
+            opacity: 0.8;
+            background-color: brown;
+        }
+
+        .items:hover {
+            opacity: 1;
         }
 
         #item-liste {
@@ -44,13 +49,19 @@
         }
 
         .valgt {
-            background-color: red;
+            background-color: brown;
         }
 
 
 
         .hidden {
             display: none;
+        }
+
+        button {
+            border-radius: 25px;
+            font-size: 2rem;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -66,15 +77,6 @@
         <button data-kategori="sideorders">Sideorders</button>
     </nav>
     <section id="item-liste"></section>
-    <section id="detalje">
-        <article class="items">
-            <button class="luk">X</button>
-            <h2></h2>
-            <img src="" alt="">
-            <p class="lang"></p>
-            <p class="oprindelse"> </p>
-        </article>
-    </section>
     <template>
         <article class="items">
             <h2 class="navn">Navn</h2>
