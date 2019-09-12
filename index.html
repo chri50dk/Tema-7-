@@ -6,14 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MADGLAD</title>
     <style>
-        //*SNYDEKODE TIL GRID
-        /*     repeat(auto-fill, minmax(200px, 1fr));
+        /*SNYDEKODE TIL GRID
+        /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 );*/
+
+        /*GOD PROPERTY TIL ET ELEMENT
+       /* item {
+            grid-column: start/slut
+        }*/
+        body {
+            background-color: ;
+            font-family: arial;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            font-family: arial;
+        }
+
+
+
+        nav {
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .items {
+            border: 1px solid silver;
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            opacity: 0.8;
+            background-color: brown;
+        }
+
+        .items:hover {
+            opacity: 1;
+        }
+
+        #item-liste {
+            width: 80vw;
+            margin: 1vw auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        .valgt {
+            background-color: brown;
+        }
+
+
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            border-radius: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
 
     </style>
 </head>
 
 <body>
+    <h1>MADGLAD</h1>
+    <nav>
+        <button data-kategori="alle" class="valgt">Alle</button>
+        <button data-kategori="fisk">Fisk</button>
+        <button data-kategori="oksekød">Oksekød</button>
+        <button data-kategori="lam">Lam</button>
+        <button data-kategori="svinekød">Svinekød</button>
+        <button data-kategori="fjerjræ">Fjerkræ</button>
+        <button data-kategori="vegetar">Vegetar</button>
+        <button data-kategori="vegansk">Sideorders</button>
+    </nav>
+    <section id="item-liste"></section>
+    <template>
+        <article class="items">
+            <h2 class="navn">Navn</h2>
+
+            <p class="lang"> </p>
+            <p class="oprindelse"> </p>
+            <p class="kort"> </p>
+            <img class="billede" src="" alt="">
+            <p class="pris"> </p>
+        </article>
+
+    </template>
     <script></script>
 </body>
 
